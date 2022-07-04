@@ -1,0 +1,6 @@
+- name: Run CommerceProject Setup
+  hosts: "{{HOST}}"
+  become: yes
+  roles:
+    - "{{ROLE}}"
+
