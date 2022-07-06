@@ -3,7 +3,7 @@
 ##### Change these values ###
 ZONE_ID="Z080600234ZUEKDP4RGN8"
 SG_NAME="allow-all-to-public"
-IAM_INSTANCE_PROFILE="Arn=arn:aws:iam::633788536644:instance-profile/role-for-secret-manager-for-roboshop-components"
+IAM_INSTANCE_PROFILE="Arn=arn:aws:iam::668375614057:instance-profile/role-for-secret-manager-for-roboshop-components"
 #############################
 
 
@@ -21,9 +21,9 @@ create_ec2() {
   sed -e "s/IPADDRESS/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}/" route53.json >/tmp/record.json
   aws route53 change-resource-record-sets --hosted-zone-id ${ZONE_ID} --change-batch file:///tmp/record.json | jq
 }
-//change AMI ID to your current ID
-#AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=Centos-7-DevOps-Practice" | jq '.Images[].ImageId' | sed -e 's/"//g')
-AMI_ID="ami-0bb6af715826253bf"
+##change AMI ID to your current ID
+AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=Centos-7-DevOps-Practice" | jq '.Images[].ImageId' | sed -e 's/"//g')
+#AMI_ID="ami-0bb6af715826253bf"
 SGID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=${SG_NAME} | jq  '.SecurityGroups[].GroupId' | sed -e 's/"//g')
 
 if [ "$COMPONENT" == "all" ]; then
