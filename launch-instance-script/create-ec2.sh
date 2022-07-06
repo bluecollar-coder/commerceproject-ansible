@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ##### Change these values ###
-ZONE_ID="Z080600234ZUEKDP4RGN8"
+ZONE_ID="Z0513927KCEV5S80ZTGL"
 SG_NAME="allow-all-to-public"
 IAM_INSTANCE_PROFILE="Arn=arn:aws:iam::668375614057:instance-profile/role-for-secret-manager-for-roboshop-components"
 #############################
